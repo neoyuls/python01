@@ -8,9 +8,8 @@ class Plant:
         self.height = height
         self.plant_age = age
 
-    def show(self):
-        print(f"{self.name.capitalize()}: {self.height}cm", end="")
-        print(f", {self.plant_age} days old")
+    def show(self) -> str:
+        return f"{self.name.capitalize()}: {self.height}cm, {self.plant_age} days old"
 
     def grow(self):
         self.height = round(self.height + 0.8, 1)
@@ -23,12 +22,12 @@ def ft_plant_growth() -> None:
     growing_plant = Plant("rose", 25, 30)
     day = 1
     print("=== Garden Plant Growth ===")
-    growing_plant.show()
+    print(growing_plant.show())
     while day <= 7:
         print(f"=== Day {day} ===")
         growing_plant.age()
         growing_plant.grow()
-        growing_plant.show()
+        print(growing_plant.show())
         day += 1
 
 

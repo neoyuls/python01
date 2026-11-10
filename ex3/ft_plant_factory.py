@@ -8,9 +8,8 @@ class Plant:
         self.height = height
         self.plant_age = age
 
-    def show(self):
-        print(f"{self.name.capitalize()}: {self.height}cm", end="")
-        print(f", {self.plant_age} days old")
+    def show(self) -> str:
+        return f"{self.name.capitalize()}: {self.height}cm, {self.plant_age} days old"
 
 
 def ft_plant_factory() -> None:
@@ -24,8 +23,7 @@ def ft_plant_factory() -> None:
 
     print("=== Plant Factory Output ===")
     for plant in plants:
-        print("Created: ", end="")
-        plant.show()
+        print(f"Created: {plant.show()}")
 
 
 if __name__ == "__main__":
