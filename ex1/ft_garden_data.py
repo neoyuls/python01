@@ -8,6 +8,10 @@ class Plant:
         self.height = height
         self.age = age
 
+    def show(self):
+        print(f"{self.name.capitalize()}: {self.height}cm", end="")
+        print(f", {self.age} days old")
+
 
 if __name__ == "__main__":
     plants = [
@@ -17,5 +21,4 @@ if __name__ == "__main__":
     ]
     print("=== Garden Plant Registry ===")
     for plant in plants:
-        print(f"{plant.name.capitalize()}: {plant.height}cm", end="")
-        print(f", {plant.age} days old")
+        plant.show()
