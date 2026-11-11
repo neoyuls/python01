@@ -1,18 +1,19 @@
 class Plant:
     name: str
     height: float
-    age: int
+    plant_age: int
 
-    def __init__(self, name: str, height: float, age: int) -> None:
+    def __init__(self, name: str, height: float, plant_age: int) -> None:
         self.name = name
         self.height = height
-        self.age = age
+        self.plant_age = plant_age
 
     def show(self) -> str:
-        return f"{self.name.capitalize()}: {self.height}cm, {self.age} days old"
+        cap = self.name.capitalize()
+        return f"{cap}: {self.height}cm, {self.plant_age} days old"
 
 
-if __name__ == "__main__":
+def ft_garden_data():
     plants = [
         Plant("rose", 25, 30),
         Plant("sunflower", 80, 45),
@@ -21,3 +22,7 @@ if __name__ == "__main__":
     print("=== Garden Plant Registry ===")
     for plant in plants:
         print(plant.show())
+
+
+if __name__ == "__main__":
+    ft_garden_data()
