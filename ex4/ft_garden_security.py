@@ -1,40 +1,45 @@
 class Plant:
     def __init__(self, name: str, height: float, age: int) -> None:
-        self._name = name
+        self._name = name.capitalize()
         self._height = height
-        self._plant_age = age
+        self._age = age
 
     def show(self) -> str:
-        cap = self._name.capitalize()
-        return f"{cap}: {self._height}cm, {self._plant_age} days old"
+        return f"{self._name}: {self._height}cm, {self._age} days old"
 
-    def get_age(self) -> int:
-        return self._plant_age
+    def grow(self, days: int = 1, rate: float = 0.8) -> None:
+        self._height = round(self._height + (rate * days), 1)
+
+    def age(self, days: int = 1) -> None:
+        self._age += days
 
     def get_height(self) -> float:
         return self._height
 
-    def set_age(self, newage: int) -> None:
-        if newage >= 0:
-            self._plant_age = newage
-            print(f"Age updated: {newage} days")
-        else:
-            print(f"{self._name.capitalize()}: Error, age can't be negative")
-            print("Age update rejected")
+    def get_age(self) -> int:
+        return self._age
 
-    def set_height(self, newheight: float) -> None:
-        if newheight >= 0:
-            self._height = float(newheight)
-            print(f"Height updated: {newheight}cm")
+    def set_height(self, new_height: float) -> None:
+        if new_height >= 0:
+            self._height = float(new_height)
+            print(f"Height updated: {new_height}cm")
         else:
-            print(f"{self._name.capitalize()}: Error, height can't be negative")
+            print(f"{self._name}: Error, height can't be negative")
             print("Height update rejected")
+
+    def set_age(self, new_age: int) -> None:
+        if new_age >= 0:
+            self._age = new_age
+            print(f"Age updated: {new_age} days")
+        else:
+            print(f"{self._name}: Error, age can't be negative")
+            print("Age update rejected")
 
 
 def ft_garden_security() -> None:
     plant = Plant("rose", 15.0, 10)
     print("=== Garden Security System ===")
-    print(f"Plant created: {plant.show()} \n")
+    print(f"Plant created: {plant.show()}\n")
     plant.set_height(25)
     plant.set_age(30)
     print()

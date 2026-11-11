@@ -1,19 +1,14 @@
 class Plant:
-    name: str
-    height: float
-    plant_age: int
-
-    def __init__(self, name: str, height: float, plant_age: int) -> None:
-        self.name = name
-        self.height = height
-        self.plant_age = plant_age
+    def __init__(self, name: str, height: float, age: int) -> None:
+        self._name = name.capitalize()
+        self._height = height
+        self._age = age
 
     def show(self) -> str:
-        cap = self.name.capitalize()
-        return f"{cap}: {self.height}cm, {self.plant_age} days old"
+        return f"{self._name}: {self._height}cm, {self._age} days old"
 
 
-def ft_garden_data():
+def ft_garden_data() -> None:
     plants = [
         Plant("rose", 25, 30),
         Plant("sunflower", 80, 45),
