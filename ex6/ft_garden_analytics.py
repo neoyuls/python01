@@ -36,7 +36,7 @@ class Plant:
 
     def grow(self, days: int = 1, rate: float = 0.8) -> None:
         self._stats.grow_stat += 1
-        self._height = float(round(self._height + (rate * days), 1))
+        self._height = round(self._height + (rate * days), 1)
 
     def age(self, days: int = 1) -> None:
         self._stats.age_stat += 1
@@ -50,7 +50,7 @@ class Plant:
 
     def set_height(self, new_height: float):
         if new_height >= 0:
-            self._height = float(new_height)
+            self._height = new_height
             print(f"Height updated: {new_height}cm")
         else:
             print(f"{self._name}: Error, height can't be negative")
@@ -76,10 +76,10 @@ class Flower(Plant):
         self._bloomed = True
 
     def show(self) -> str:
-        text = f"{super().show()}\nColor: {self._color}"
+        text = f"{super().show()}\n Color: {self._color}"
         if self._bloomed:
-            return f"{text}\n{self._name} is blooming beautifully!"
-        return f"{text}\n{self._name} has not bloomed yet."
+            return f"{text}\n {self._name} is blooming beautifully!"
+        return f"{text}\n {self._name} has not bloomed yet"
 
 
 class Tree(Plant):
@@ -103,12 +103,14 @@ class Tree(Plant):
         self._trunk_diameter = trunk_diameter
 
     def show(self) -> str:
-        return f"{super().show()}\nTrunk diameter: {self._trunk_diameter}cm"
+        return (f"{super().show()}"
+                f"\n Trunk diameter: {self._trunk_diameter:.1f}cm")
 
     def produce_shade(self) -> None:
         self._stats.shade_stat += 1
         print(f"Tree {self._name} now produces a shade of "
-              f"{self._height}cm long and {self._trunk_diameter}cm wide.")
+              f"{self._height:.1f}cm long and "
+              f"{self._trunk_diameter:.1f}cm wide.")
 
     def grow(self, days: int = 1, rate: float = 0.8) -> None:
         self._stats.grow_stat += 1
@@ -129,8 +131,8 @@ class Vegetable(Plant):
 
     def show(self) -> str:
         return (f"{super().show()}"
-                f"\nHarvest season: {self._harvest_season}"
-                f"\nNutritional value: {self._nutritional_value}")
+                f"\n Harvest season: {self._harvest_season}"
+                f"\n Nutritional value: {self._nutritional_value}")
 
 
 class Seed(Flower):
@@ -173,17 +175,20 @@ def ft_garden_analytics():
     display_stats(rose)
     print("\n=== Tree")
     print(oak.show())
+    print("[statistics for Oak]")
     display_stats(oak)
     print("[asking the oak to produce shade]")
     oak.produce_shade()
+    print("[statistics for Oak]")
     display_stats(oak)
     print("\n=== Seed")
     print(f"{sunflower.show()}")
     print("[make sunflower grow, age and bloom]")
-    sunflower.grow(4 / 3, 20)
+    sunflower.grow(20, 1.5)
     sunflower.age(20)
     sunflower.bloom()
     print(f"{sunflower.show()}")
+    print("[statistics for Sunflower]")
     display_stats(sunflower)
     print("\n=== Anonymous")
     print(f"{anonymous.show()}")

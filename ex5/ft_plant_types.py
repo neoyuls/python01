@@ -21,7 +21,7 @@ class Plant:
 
     def set_height(self, new_height: float) -> None:
         if new_height >= 0:
-            self._height = float(new_height)
+            self._height = new_height
             print(f"Height updated: {new_height}cm")
         else:
             print(f"{self._name}: Error, height can't be negative")
@@ -47,10 +47,10 @@ class Flower(Plant):
         self._bloomed = True
 
     def show(self) -> str:
-        text = f"{super().show()}\nColor: {self._color}"
+        text = f"{super().show()}\n Color: {self._color}"
         if self._bloomed:
-            return f"{text}\n{self._name} is blooming beautifully!"
-        return f"{text}\n{self._name} has not bloomed yet."
+            return f"{text}\n {self._name} is blooming beautifully!"
+        return f"{text}\n {self._name} has not bloomed yet"
 
 
 class Tree(Plant):
@@ -60,7 +60,7 @@ class Tree(Plant):
         self._trunk_diameter = trunk_diameter
 
     def show(self) -> str:
-        return f"{super().show()}\nTrunk diameter: {self._trunk_diameter}cm"
+        return f"{super().show()}\n Trunk diameter: {self._trunk_diameter}cm"
 
     def produce_shade(self) -> None:
         print(f"Tree {self._name} now produces a shade of "
@@ -81,8 +81,8 @@ class Vegetable(Plant):
 
     def show(self) -> str:
         return (f"{super().show()}"
-                f"\nHarvest season: {self._harvest_season}"
-                f"\nNutritional value: {self._nutritional_value}")
+                f"\n Harvest season: {self._harvest_season}"
+                f"\n Nutritional value: {self._nutritional_value}")
 
 
 def ft_plant_types() -> None:
