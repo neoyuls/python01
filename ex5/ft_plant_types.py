@@ -46,13 +46,11 @@ class Flower(Plant):
     def bloom(self) -> None:
         self._bloomed = True
 
-    def show(self) -> None:
-        print(super().show())
-        print(f"Color: {self._color}")
+    def show(self) -> str:
+        text = f"{super().show()}\nColor: {self._color}"
         if self._bloomed:
-            print(f"{self._name} is blooming beautifully!")
-        else:
-            print(f"{self._name} has not bloomed yet.")
+            return f"{text}\n{self._name} is blooming beautifully!"
+        return f"{text}\n{self._name} has not bloomed yet."
 
 
 class Tree(Plant):
@@ -61,9 +59,8 @@ class Tree(Plant):
         super().__init__(name, height, age)
         self._trunk_diameter = trunk_diameter
 
-    def show(self) -> None:
-        print(super().show())
-        print(f"Trunk diameter: {self._trunk_diameter}cm")
+    def show(self) -> str:
+        return f"{super().show()}\nTrunk diameter: {self._trunk_diameter}cm"
 
     def produce_shade(self) -> None:
         print(f"Tree {self._name} now produces a shade of "
@@ -82,10 +79,10 @@ class Vegetable(Plant):
         super().grow(days, rate)
         self._nutritional_value += days
 
-    def show(self) -> None:
-        print(super().show())
-        print(f"Harvest season: {self._harvest_season}")
-        print(f"Nutritional value: {self._nutritional_value}")
+    def show(self) -> str:
+        return (f"{super().show()}"
+                f"\nHarvest season: {self._harvest_season}"
+                f"\nNutritional value: {self._nutritional_value}")
 
 
 def ft_plant_types() -> None:
@@ -93,25 +90,25 @@ def ft_plant_types() -> None:
     oak = Tree("oak", 200.0, 365, 5.0)
     tomato = Vegetable("tomato", 5.0, 10, "April")
 
-    print("=== Garden Plant Types ===\n")
+    print("=== Garden Plant Types ===")
 
-    print("=== Flower\n")
-    rose.show()
-    print("\n[asking the rose to bloom]\n")
+    print("=== Flower")
+    print(rose.show())
+    print("[asking the rose to bloom]")
     rose.bloom()
-    rose.show()
+    print(rose.show())
 
-    print("\n=== Tree\n")
-    oak.show()
-    print("\n[asking the oak to produce shade]\n")
+    print("\n=== Tree")
+    print(oak.show())
+    print("[asking the oak to produce shade]")
     oak.produce_shade()
 
-    print("\n=== Vegetable\n")
-    tomato.show()
-    print("\n[make tomato grow and age for 20 days]\n")
+    print("\n=== Vegetable")
+    print(tomato.show())
+    print("[make tomato grow and age for 20 days]")
     tomato.age(20)
     tomato.grow(20, 2.1)
-    tomato.show()
+    print(tomato.show())
 
 
 if __name__ == "__main__":
