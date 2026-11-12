@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 class Plant:
     def __init__(self, name: str, height: float, age: int) -> None:
         self._name = name.capitalize()
@@ -21,7 +22,7 @@ class Plant:
 
     def set_height(self, new_height: float) -> None:
         if new_height >= 0:
-            self._height = new_height
+            self._height = new_height * 1.0
             print(f"Height updated: {new_height}cm")
         else:
             print(f"{self._name}: Error, height can't be negative")
